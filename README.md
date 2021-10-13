@@ -1,29 +1,6 @@
 # Easy-to-use toolkit for retrieval-based Chatbot
 
-## Note
-
-- [x] The rerank performance of dual-bert-fusion is bad, the reason maybe that the context information is only for ground-truth, but the other negative samples lost their corresponding context, and during rerank procedure, we use the context of the ground-truth for all the candidates, which may pertubate the decison of the model.
-- [x] Generate the gray data need the faiss Flat  index runnign on GPU, which only costs 6~7mins for 0.5 million dataset
-- [ ] implement UMS-BERT and BERT-SL using the post-train checkpoint of the BERT-FP
-- [x] implement my own post train procedure
-- [x] implement R-Drop for bert-ft (add the similarity on the cls embedding) and dual-bert
-- [x] fix the bugs of _length_limit of the bert-ft
-- [x] dynamic margin (consider the margin between the original rerank scores)
-- [x] comparison: bce to three-classification(positive, negative, hard to tell); hard to tell could use the self-comparison and the comparison with the top-1 retrieved result
-- [x] test dual-bert-compare
-- [x] twice dropout means the consistency regularization in the semi-supervised learning
-- [x] LSH faiss index cannot use GPU, IVF index can use it and running very fast
-- [x] ISN (Inner session negative) seems useless all the datasets
-- [x] ATTENTION!!! Dual-bert must use [SEP] not [EOS], AND MAKE SURE THE TRAIN AND THE TEST ARE THE SAME!!!
-- [x] extra neg seems useful (at least for restoration-200k dataset)
-- [ ] the experience for the fine-tuning hard negative for dual-bert model
-    * very small learning ratio, hold the stability of the semantic space
-    * small hard negative size?
-    * no warmup
-- [ ] bert-fp-no-cls for context encoder, bert-fp-no-cls or bert-fp-mono for response encoder
-- [x] bert-fp data augmentation for bert-ft model is not very useful
-- [x] for bert-ft-compare, donot use the data augmentation technique
-- [x] Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing)
+Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing). Makre sure the following steps are adopted to use our codes.
 
 ## How to Use
 
