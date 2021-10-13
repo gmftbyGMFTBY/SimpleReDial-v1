@@ -1,6 +1,6 @@
 # Easy-to-use toolkit for retrieval-based Chatbot
 
-Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing). Makre sure the following steps are adopted to use our codes.
+Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing). Make sure the following steps are adopted to use our codes.
 
 ## How to Use
 
