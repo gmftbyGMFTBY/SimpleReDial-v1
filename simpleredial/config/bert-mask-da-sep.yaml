@@ -1,0 +1,15 @@
+tokenizer:
+    zh: bert-base-chinese
+pretrained_model:
+    zh: bert-base-chinese
+
+inference:
+    seed: 0
+    batch_size: 256
+    max_len: 256
+    min_len: 2
+    min_mask_num: 1
+    max_mask_num: 128
+    masked_lm_prob: 0.4
+    augmentation_t: 10
+    dropout: 0.1

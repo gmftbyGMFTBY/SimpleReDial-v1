@@ -1,0 +1,53 @@
+temp: 0.07
+dropout: 0.1
+full_turn_length: 100
+test_interval: 0.01
+valid_during_training: true
+
+# train configuration
+train:
+    load_param: true
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 64
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.
+    stop_train: false
+    stop_train_trigger:
+        R10@1: 35.
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: bert-fp-comp/best_bert-base-chinese.pt
+        # path: bert-fp-multi/best_bert-base-chinese.pt
+        # path: dual-bert-pt/best_bert-base-chinese.pt
+        # path: bert-fp-no-cls/best_bert-base-chinese.pt
+        # path: bert-fp-mono/best_bert-base-chinese.pt
+        # path: bert-fp-mono/best_bert-base-uncased.pt
+        # path: simcse/best_bert-base-chinese.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+# inference configuration
+inference:
+    seed: 0
+    batch_size: 128 
+    max_len: 64
+    ctx_max_len: 256
+    topk: 20
+    # index_type: IVF3722,Flat
+    # index_type: IVF6509,Flat
+    # index_type: IVF931,Flat
+    index_type: Flat
+    # index_type: LSH
+    index_nprobe: 5
+    dimension: 768

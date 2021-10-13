@@ -1,0 +1,19 @@
+# train configuration
+train:
+    lr: 0.00005
+    dropout: 0.1
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 64
+    max_len: 256
+    res_max_len: 32
+    min_mask_num: 1
+    max_mask_num: 20
+    masked_lm_prob: 0.15
+    epoch: 35
+    warmup_ratio: 0.05
+    retry_time: 10
+    shuffle_time: 10
+    checkpoint: 
+        path: bert-post/best_nspmlm.pt
+        is_load: false

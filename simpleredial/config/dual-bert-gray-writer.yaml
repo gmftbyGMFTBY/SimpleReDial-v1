@@ -1,0 +1,34 @@
+# arxiv: 0; writer: 5
+gray_cand_num: 0
+test_interval: 1.1
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 1.0
+    dropout: 0.1
+    smoothing: 0.1
+    seed: 0
+    batch_size: 64
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.
+    checkpoint: 
+        path: bert-post/best_nspmlm.pt
+        is_load: false
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+inference:
+    seed: 50
+    batch_size: 512
+    max_len: 64
+    index_type: LSH
+    dimension: 768
+    topk: 100

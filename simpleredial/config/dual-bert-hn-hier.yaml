@@ -1,0 +1,40 @@
+rank: null
+gray_cand_num: 5
+dropout: 0.1
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 48
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.
+    stop_train: false
+    stop_train_trigger:
+        R10@1: 40.
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: simcse/best_bert-base-chinese.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+# inference configuration
+inference:
+    seed: 0
+    batch_size: 128 
+    max_len: 64
+    ctx_max_len: 256
+    topk: 20
+    index_type: Flat
+    index_nprobe: 1
+    dimension: 768

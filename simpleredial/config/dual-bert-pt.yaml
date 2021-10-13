@@ -1,0 +1,39 @@
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 64
+    min_mask_num: 1
+    max_mask_num: 20
+    masked_lm_prob: 0.15
+    min_ctx_len: 4
+    min_res_len: 4
+    full_turn_length: 5
+    max_len: 128
+    res_max_len: 32
+    epoch: 5 
+    warmup_ratio: 0.
+    checkpoint: 
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: bert-post/best_bert-base-chinese.pt
+        # path: bert-post/best_bert-base-uncase.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 128
+    res_max_len: 32
+
+# inference configuration
+inference:
+    seed: 0
+    batch_size: 128
+    max_len: 64
+    ctx_max_len: 128
+    topk: 20
+    index_type: IV931,Flat
+    index_probe: 5
+    dimension: 768

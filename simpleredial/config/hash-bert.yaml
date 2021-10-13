@@ -1,0 +1,41 @@
+hash_code_size: 512
+hidden_size: 768
+dropout: 0.1
+# 0-11 layers will be fine-tuned, other index are invalid
+# all means that all the pearmeters will be optimized
+trainable_bert_layers: -1
+q_alpha: 0.0001
+q_alpha_max: 0.1
+hash_loss_scale: 1
+kl_loss_scale: 10
+
+# train configuration
+train:
+    lr: 0.0005
+    grad_clip: 1.0
+    smoothing: 0.1
+    seed: 50
+    batch_size: 256
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.1
+    checkpoint: 
+        path: dual-bert-gray-writer/best_bert-base-chinese.pt
+        # path: dual-bert/best_bert-base-chinese.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 50
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+inference:
+    seed: 50
+    batch_size: 512
+    max_len: 64
+    index_type: BHash512
+    dimension: 512
+    topk: 20

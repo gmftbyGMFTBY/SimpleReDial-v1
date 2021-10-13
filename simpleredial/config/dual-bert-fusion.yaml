@@ -1,0 +1,35 @@
+smoothing: 0.1
+dropout: 0.1
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 1.0
+    seed: 50
+    batch_size: 48
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.1
+    checkpoint: 
+        path: bert-post/best_nspmlm.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 50
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+# inference configuration
+inference:
+    seed: 50
+    batch_size: 128
+    max_len: 256
+    res_max_len: 64
+    topk: 20
+    index_type: LSH
+    dimension: 768
+    # 0 means all the context utterances are included
+    max_context_turn: 0

@@ -1,0 +1,42 @@
+# basic configuration for building the model
+tokenizer: 
+    # zh: /apdcephfs/share_916081/johntianlan/gpt2_model
+    zh: /apdcephfs/share_916081/johntianlan/uer_gpt2_model
+pretrained_model: 
+    # zh: /apdcephfs/share_916081/johntianlan/gpt2_model
+    zh: /apdcephfs/share_916081/johntianlan/uer_gpt2_model
+bert_pretrained_model: bert-base-chinese
+max_len: 512
+min_len: 16 
+topk: 50
+topp: 1.0
+temp: 1.0
+repetition_penalty: 3.0
+gen_max_len: 512
+gen_min_len: 16
+test_interval: 0.05
+valid_during_training: false
+
+# train configuration
+train:
+    lr: 0.0002
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 32
+    train_max_len: 128
+    train_min_len: 64
+    res_max_len: 64
+    epoch: 10
+    warmup_ratio: 0.
+    alpha: 0.2
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        is_load: false
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 32
+    max_len: 256
+    min_len: 16 

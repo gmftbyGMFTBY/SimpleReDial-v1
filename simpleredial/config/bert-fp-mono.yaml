@@ -1,0 +1,21 @@
+# basic configuration for building the model
+dropout: 0.1
+
+# train configuration
+train:
+    lr: 0.00003
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 128
+    max_len: 64
+    min_len: 5
+    min_mask_num: 1
+    max_mask_num: 20
+    masked_lm_prob: 0.15
+    epoch: 35
+    warmup_ratio: 0.01
+    checkpoint: 
+        # path: bert-fp/best_bert-base-chinese.pt
+        path: bert-fp-no-cls/best_bert-base-chinese.pt
+        # path: bert-post/best_nspmlm.pt
+        is_load: true

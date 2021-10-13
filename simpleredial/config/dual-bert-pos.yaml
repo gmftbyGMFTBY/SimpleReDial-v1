@@ -1,0 +1,59 @@
+smoothing: 0.1
+# rank: bert-ft-compare
+rank: null
+temp: 1.0
+# for restoration-200k, it is 5, for douban and ubuntu, it can be more
+full_turn_length: 5
+ext_turn_size: 4
+gray_cand_num: 2
+# extra_neg for dataset: BERTDualFullExtraNegDataset
+extra_neg: 256
+da_ctx_num: 2
+replace_ratio: 0.5
+proj_size: 1024
+dropout: 0.1
+min_w: 0.5
+w_delta: 1.
+w_sp_token: 0.1
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 64
+    max_len: 256
+    res_max_len: 64
+    epoch: 5
+    # no wamrup, set 0.0 (BERT-FP and UMS_BERT)
+    warmup_ratio: 0.
+    stop_train: false
+    stop_train_trigger:
+        R10@1: 35.
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: bert-fp-mono/best_bert-base-chinese.pt
+        # path: simcse/best_bert-base-chinese.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+# inference configuration
+inference:
+    seed: 0
+    batch_size: 128 
+    max_len: 64
+    ctx_max_len: 256
+    topk: 20
+    # index_type: IVF3722,Flat
+    # index_type: IVF6509,Flat
+    # index_type: IVF4309,Flat
+    index_type: Flat
+    index_nprobe: 1
+    dimension: 768

@@ -1,0 +1,25 @@
+# basic configuration for building the model
+dropout: 0.1
+gray_cand_num: 10
+# rank: bert-ft-compare-plus
+rank: null
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 64
+    max_len: 256
+    epoch: 5
+    warmup_ratio: 0.0
+    checkpoint: 
+        path: bert-post/best_nspmlm.pt
+        # path: bert-fp/best_bert-base-chinese.pt
+        is_load: false
+
+# test configuration
+test:
+    seed: 0
+    batch_size: 32
+    max_len: 256

@@ -1,0 +1,18 @@
+rank: null
+temp: 1.0
+
+# train configuration
+train:
+    lr: 0.00005
+    grad_clip: 5.0
+    seed: 0
+    batch_size: 128
+    res_max_len: 64
+    epoch: 5
+    warmup_ratio: 0.05
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: bert-fp-mono/best_bert-base-chinese.pt
+        # path: simcse/best_bert-base-chinese.pt
+        is_load: true

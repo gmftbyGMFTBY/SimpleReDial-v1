@@ -1,0 +1,30 @@
+# [inner_bsz] the batch for one train step is to big, split and run it in multiple times
+inner_bsz: 64
+gray_cand_num: 2
+dropout: 0.1
+compare_turn_num: 2
+test_interval: 0.05
+no_hard_negative: false
+valid_during_training: false
+
+# train configuration
+train:
+    lr: 0.00003
+    grad_clip: 1.0
+    seed: 0
+    batch_size: 32
+    max_len: 288    # 256 + 32
+    epoch: 5
+    warmup_ratio: 0.
+    checkpoint: 
+        # path: bert-post/best_nspmlm.pt
+        path: bert-fp/best_bert-base-chinese.pt
+        # path: bert-fp-comp/best_bert-base-chinese.pt
+        is_load: true
+
+# test configuration
+test:
+    seed: 0
+    # must be one (because of the fully compare)
+    batch_size: 1
+    max_len: 288

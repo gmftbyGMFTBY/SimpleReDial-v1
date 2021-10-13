@@ -1,0 +1,529 @@
+datasets: 
+    ecommerce: zh
+    douban: zh
+    writer: zh
+    lccc: zh
+    ubuntu: en
+    # inference dataset
+    poetry: zh
+    news_withsource: zh
+    novel_selected: zh
+    baike_summary: zh
+    arxiv: en
+    restoration-200k: zh
+    essay: zh
+    unlikelyhood-gen: zh
+    ext_douban: zh
+
+# pretrained model and tokenizer
+tokenizer:
+    # zh: hfl/chinese-roberta-wwm-ext
+    zh: bert-base-chinese
+    # zh: hfl/chinese-bert-wwm-ext
+    en: bert-base-uncased
+
+pretrained_model:
+    # zh: hfl/chinese-roberta-wwm-ext
+    zh: bert-base-chinese
+    # zh: hfl/chinese-bert-wwm-ext
+    en: bert-base-uncased
+
+no_test_models:
+    - bert-fp
+    - bert-fp-comp
+    - bert-fp-multi
+    - bert-fp-no-cls
+    - bert-fp-mono
+    - simcse
+    - bert-mask-da
+    - bert-mask-da-dmr
+    - bert-mask-da-sep
+    - dual-bert-unsup
+
+no_train_models:
+    - bert-fp-original
+    - bert-mask-da
+    - bert-mask-da-dmr
+    - bert-mask-da-sep
+
+curriculum_learning_models:
+    - dual-bert-hn-cl
+
+models:
+    bert-mask-da-sep:
+        type: Augmentation
+        model_name: BERTMaskAugmentationSepModel
+        inference_dataset_name: BERTMaskAugmentationFullSepDataset
+    bert-mask-da:
+        type: Augmentation
+        model_name: BERTMaskAugmentationModel
+        # inference_dataset_name: BERTMaskAugmentationDataset
+        inference_dataset_name: BERTMaskAugmentationFullDataset
+    bert-mask-da-dmr:
+        type: Augmentation
+        model_name: BERTMaskAugmentationDMRModel
+        inference_dataset_name: BERTMaskAugmentationFullDataset
+    dual-bert-ml: 
+        type: Representation
+        model_name: BERTDualMLEncoder
+        dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-unsup: 
+        type: PostTrain
+        model_name: BERTDualUnsupervisedEncoder
+        dataset_name: BERTDualUnsupervisedDataset
+        inference_dataset_name: null
+    simcse: 
+        type: PostTrain
+        model_name: SimCSE
+        dataset_name: SimCSEDataset
+        # dataset_name: SimCSEUnlikelyhoodDataset
+        # inference_dataset_name: BERTSimCSEInferenceDataset
+        inference_dataset_name: BERTSimCSEInferenceContextDataset
+        # inference_dataset_name: BERTSimCSEUnlikelyhoodInferenceDataset
+        # inference_dataset_name: BERTSimCSEUnlikelyhoodInferenceContextDataset
+    dual-bert-mixup: 
+        type: Representation
+        model_name: BERTDualMixUpEncoder
+        dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-semi: 
+        type: Representation
+        model_name: BERTDualSemiEncoder
+        dataset_name: BERTDualSemiDataset
+        inference_dataset_name: BERTDualInferenceDataset
+        # inference_dataset_name: BERTDualInferenceContextDataset
+    dual-bert-grading: 
+        type: Representation
+        model_name: BERTDualGradingEncoder
+        dataset_name: BERTDualSimCSEHardNegativeDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-ishn: 
+        type: Representation
+        model_name: BERTDualISHNEncoder
+        dataset_name: BERTDualFullISHNDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-cosine: 
+        type: Representation
+        model_name: BERTDualCosineEncoder
+        dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-hn-hier: 
+        type: Representation
+        model_name: BERTDualHNHierEncoder
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-hn-pos:
+        type: Representation
+        model_name: BERTDualHNPosEncoder
+        dataset_name: BERTDualBertMaskHardNegativeWithPositionWeightDataset
+        # dataset_name: FineGrainedTestPositionWeightDataset
+        # inference_dataset_name: BERTDualInferenceDataset
+        inference_dataset_name: BERTDualInferenceFullEXTDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+        # inference_dataset_name: BERTDualInferenceWithTestDataset
+    dual-bert-hn-ctx: 
+        type: Representation
+        # model_name: BERTDualHNContextEncoder
+        model_name: BERTDualShuffleCtxHNEncoder
+        # dataset_name: BERTDualBertMaskRandomContextHardNegativeDataset
+        dataset_name: BERTDualFullShuffleCtxDataset
+        # dataset_name: HORSETestDataset
+        # dataset_name: FineGrainedTestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+        # inference_dataset_name: BERTDualInferenceWithTestDataset
+    dual-bert-hn-sa: 
+        type: Representation
+        model_name: BERTDualSAHNEncoder
+        dataset_name: BERTDualSABertMaskHardNegativeDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-hn-bce:
+        type: Representation
+        model_name: BERTDualHNEncoderBCE
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        inference_dataset_name: null
+    dual-bert-hn-cl: 
+        type: Representation
+        model_name: BERTDualHNCurriculumEncoder
+        dataset_name: BERTDualCurriculumLearningFullDataset
+        # dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceFullEXTDataset
+    dual-bert-hn: 
+        type: Representation
+        model_name: BERTDualHNEncoder
+        # dataset_name: BERTDualCTXHNFullDataset
+        # dataset_name: BERTDualHNDataset
+        # dataset_name: BERTDualFullDataset
+        # dataset_name: BERTDualBM25HNDataset
+        # dataset_name: HORSETestDataset
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        # dataset_name: BERTDualSimCSEHardNegativeDataset
+        # dataset_name: FineGrainedTestDataset
+        # dataset_name: BERTDualFullWithHardNegDataset
+        # inference_dataset_name: BERTDualInferenceDataset
+        # inference_dataset_name: BERTDualInferenceFullDataset
+        inference_dataset_name: BERTDualInferenceFullEXTDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+        # inference_dataset_name: BERTDualInferenceWithTestDataset
+    dual-bert-proj: 
+        type: Representation
+        model_name: BERTDualHNProjEncoder
+        # dataset_name: BERTDualBertMaskHardNegativeDataset
+        dataset_name: FineGrainedTestDataset
+        # inference_dataset_name: BERTDualInferenceDataset
+        inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+    dual-bert-pos:
+        type: Representation
+        model_name: BERTDualPositionWeightEncoder
+        # dataset_name: BERTDualFullWithPositionWeightDataset
+        dataset_name: FineGrainedTestPositionWeightDataset
+        inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+        # inference_dataset_name: BERTDualInferenceWithTestDataset
+    dual-bert-ext-neg:
+        type: Representation
+        model_name: BERTDualExtNegEncoder
+        dataset_name: BERTDualFullExtraNegDataset
+        # dataset_name: BERTDualFullExtraNegFromOutDatasetDataset
+    dual-bert-oa: 
+        type: Representation
+        model_name: BERTDualOAEncoder
+        dataset_name: BERTDualFullDataset
+        # dataset_name: BERTDualRandomFullDataset
+        inference_dataset_name: BERTDualInferenceFullDataset
+    dual-bert-sa: 
+        type: Representation
+        model_name: BERTDualSAEncoder
+        # dataset_name: BERTDualSAFullDataset
+        dataset_name: HORSESATestDataset
+        inference_dataset_name: null
+    dual-bert-vae:
+        type: Representation
+        model_name: BERTDualVAEEncoder
+        dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-speaker:
+        type: Representation
+        model_name: BERTDualSpeakerEncoder
+        dataset_name: BERTDualSpeakerFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-margin:
+        type: Representation
+        model_name: BERTDualWithMarginEncoder
+        dataset_name: BERTDualFullDataset
+        # dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-cl:
+        type: Representation
+        model_name: BERTDualCLEncoder
+        dataset_name: BERTDualFullCtxCLDataset
+        # dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-adv:
+        type: Representation
+        model_name: BERTDualAdvEncoder
+        # dataset_name: BERTDualFullDataset
+        dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-memory:
+        type: Representation
+        model_name: BERTDualMemoryEncoder
+        # dataset_name: BERTDualFullDataset
+        dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-multi:
+        type: Representation
+        model_name: BERTDualMultiEncoder
+        # dataset_name: BERTDualFullDataset
+        dataset_name: HORSETestDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-nhp: 
+        type: Representation
+        model_name: BERTDualNHPEncoder
+        dataset_name: BERTDualFullNHPDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert: 
+        type: Representation
+        model_name: BERTDualEncoder
+        # dataset_name: BERTDualFullFakeCtxDataset
+        # dataset_name: BERTDualDataset
+        # dataset_name: BERTDualFullWithHardNegDataset
+        dataset_name: BERTDualFullDataset
+        # dataset_name: BERTDualDAFullDataset
+        # dataset_name: HORSETestDataset
+        # dataset_name: BERTDualRandomFullDataset
+        # dataset_name: BERTDualMultiCTXFullDataset
+        # dataset_name: BERTDualTimeDataset
+        # dataset_name: FineGrainedTestDataset
+        # dataset_name: BERTDualReplaceBadResponseDataset
+        # dataset_name: BERTDualFullDACTXDataset
+        # dataset_name: BERTDualExtFullDataset
+        # dataset_name: BERTDualFullNegSessionDataset
+        # dataset_name: BERTDualFullWithSelfPlayDataset
+        # dataset_name: BERTDualFullPseudoDataset
+        # inference_dataset_name: BERTDualFullFilterInferenceDataset
+        # inference_dataset_name: BERTDualInferenceDataset
+        # inference_dataset_name: BERTDualInferenceWithTestDataset
+        # inference_dataset_name: BERTDualInferenceFullWithTestDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTWithTestDataset
+        # inference_dataset_name: BERTDualInferenceWithSourceDataset
+        # inference_dataset_name: BERTDualInferenceFullDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTDataset
+        # inference_dataset_name: BERTDualInferenceContextDataset
+        # inference_dataset_name: BERTDualInferenceFullContextDataset
+        # inference_dataset_name: BERTDualInferenceFullContextSingleExtendDataset
+        inference_dataset_name: BERTDualInferenceFullForOne2ManyDataset
+    dual-bert-triplet:
+        type: Representation
+        model_name: BERTDualEncoderTripletMargin
+        # dataset_name: BERTDualFullDataset
+        # dataset_name: BERTDualSimCSEHardNegativeDataset
+        # dataset_name: BERTDualBM25HNDataset
+        dataset_name: HORSETestDataset
+        inference_dataset_name: null
+    dual-bert-bow: 
+        type: Representation
+        model_name: BERTDualBOWEncoder
+        dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-phrase: 
+        type: Generation
+        model_name: BERTDualPhraseEncoder
+        dataset_name: BERTDualPhraseDataset
+        inference_dataset_name: BERTDualInferencePhraseDataset
+    dual-bert-one2many-original: 
+        type: Representation
+        model_name: BERTDualO2MOriginalEncoder
+        dataset_name: BERTDualO2MDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-one2many: 
+        type: Representation
+        model_name: BERTDualO2MEncoder
+        # model_name: BERTDualO2MTopKEncoder
+        dataset_name: BERTDualO2MDataset
+        # dataset_name: BERTDualFullDataset
+        inference_dataset_name: BERTDualInferenceDataset
+        # inference_dataset_name: BERTDualInferenceFullDataset
+        # inference_dataset_name: BERTDualInferenceFullEXTDataset
+        # inference_dataset_name: BERTDualInferenceContextDataset
+    dual-bert-fusion: 
+        type: Representation
+        model_name: BERTDualFusionEncoder
+        dataset_name: BERTDualDataset
+        inference_dataset_name: BERTDualCLInferenceDataset
+    dual-bert-fusion-gray-writer: 
+        type: Representation
+        model_name: BERTDualFusionGrayFullEncoder
+        dataset_name: BERTDualFullWithNegDataset
+        inference_dataset_name: BERTDualCLInferenceDataset
+    hash-bert: 
+        type: Representation
+        model_name: HashBERTDualEncoder
+        dataset_name: BERTDualFullWithNegDataset
+        # dataset_name: BERTDualDataset
+        inference_dataset_name: BERTDualFullInferenceDataset
+        # inference_dataset_name: BERTDualInferenceDataset
+    gpt2-unlikely: 
+        type: Generation
+        model_name: GPT2UnlikelyModel
+        dataset_name: GPT2UnlikelyhoodDataset
+        inference_dataset_name: null
+    gpt2: 
+        type: Generation
+        model_name: GPT2Model
+        dataset_name: GPT2Dataset
+        inference_dataset_name: null
+    dual-bert-gen: 
+        type: Generation
+        model_name: BERTSeq2SeqDualEncoder
+        dataset_name: BERTDualDataset
+        inference_dataset_name: null
+    seq2seq: 
+        type: Generation
+        model_name: BERTSeq2SeqEncoder
+        dataset_name: BERTDualDataset
+        inference_dataset_name: null 
+    dual-bert-gray: 
+        type: Representation
+        model_name: BERTDualGrayEncoder
+        dataset_name: BERTDualFullWithNegDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    dual-bert-gray-writer: 
+        type: Representation
+        model_name: BERTDualGrayFullEncoder
+        dataset_name: BERTDualFullWithNegDataset
+        # dataset_name: BERTDualArxivDataset
+        # inference_dataset_name: BERTDualFullInferenceDataset
+        inference_dataset_name: BERTDualFullWithSourceInferenceDataset
+    dual-bert-hier: 
+        type: Representation
+        model_name: BERTDualHierarchicalEncoder
+        dataset_name: BERTDualFullHierDataset
+        inference_dataset_name: BERTDualInferenceDataset
+    bert-ft: 
+        type: Interaction
+        model_name: BERTRetrieval
+        # dataset_name: FineGrainedTestInteractionDataset
+        # dataset_name: BERTFTDataset
+        dataset_name: BERTFTFullDataset
+        # dataset_name: HORSETestInteractionDataset
+        # dataset_name: BERTFTTimeDataset
+        inference_dataset_name: null 
+    bert-fp-original: 
+        type: Interaction
+        model_name: BERTFPRetrieval
+        dataset_name: BERTFTDataset
+        inference_dataset_name: null 
+    bert-ft-compare-token: 
+        type: CompareInteraction
+        model_name: BERTCompareTokenEncoder
+        dataset_name: BERTFTCompTokenDataset
+        # dataset_name: HORSECompTestDataset
+        inference_dataset_name: null
+    bert-ft-compare-multi-ens: 
+        type: CompareInteraction
+        model_name: BERTCompareMultiENSEncoder
+        dataset_name: BERTFTCompMultiDataset
+        # dataset_name: HORSECompTestDataset
+        inference_dataset_name: null
+    bert-ft-compare-multi-cls: 
+        type: CompareInteraction
+        model_name: BERTCompareMultiCLSEncoder
+        dataset_name: BERTFTCompMultiCLSDataset
+        # dataset_name: HORSECompTestDataset
+        inference_dataset_name: null
+    bert-ft-compare-multi: 
+        type: CompareInteraction
+        model_name: BERTCompareMultiEncoder
+        dataset_name: BERTFTCompMultiDataset
+        # dataset_name: HORSECompTestDataset
+        inference_dataset_name: null
+    bert-ft-compare: 
+        type: CompareInteraction
+        model_name: BERTCompareRetrieval
+        dataset_name: BERTFTCompDataset
+        # dataset_name: HORSECompTestDataset
+        inference_dataset_name: null
+    dual-bert-comp-hn: 
+        type: CompareInteraction
+        model_name: BERTDualCompareHNEncoder
+        # dataset_name: FineGrainedTestDataset
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        inference_dataset_name: BERTDualInferenceFullEXTDataset
+    dual-bert-comp: 
+        type: CompareInteraction
+        model_name: BERTDualCompareEncoder
+        # dataset_name: BERTDualFullDataset
+        dataset_name: FineGrainedTestDataset
+        inference_dataset_name: BERTDualInferenceFullEXTDataset
+    dual-bert-compare: 
+        type: CompareInteraction
+        model_name: BERTDualCompEncoder
+        # dataset_name: BERTDualWithNegDataset
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        # dataset_name: FineGrainedTestDataset
+        inference_dataset_name: null
+    sa-bert: 
+        type: Interaction
+        model_name: SABERTRetrieval 
+        # dataset_name: SABERTFTDataset
+        dataset_name: HORSETestSAInteractionDataset
+        inference_dataset_name: null 
+    poly-encoder-hn: 
+        type: LatentInteraction
+        model_name: PolyEncoderHN
+        dataset_name: BERTDualBertMaskHardNegativeDataset
+        # dataset_name: BERTDualTimeDataset
+        inference_dataset_name: null
+    poly-encoder: 
+        type: LatentInteraction
+        model_name: PolyEncoder
+        # dataset_name: BERTDualFullDataset
+        dataset_name: HORSETestDataset
+        # dataset_name: BERTDualDataset
+        # dataset_name: BERTDualTimeDataset
+        inference_dataset_name: null
+    bert-fp-no-cls: 
+        type: PostTrain
+        model_name: BERTFPNoCLSPostTrain
+        dataset_name: PostTrainNoCLSDataset
+        inference_dataset_name: null 
+    bert-fp-multi: 
+        type: PostTrain
+        model_name: BERTFPMultiPostTrain
+        dataset_name: PostTrainMultiStrategiesDataset
+        inference_dataset_name: null 
+    bert-fp-comp: 
+        type: PostTrain
+        model_name: BERTFPCompPostTrain
+        dataset_name: PostTrainComparisonDataset
+        inference_dataset_name: null
+    bert-fp: 
+        type: PostTrain
+        model_name: BERTFPPostTrain
+        dataset_name: PostTrainDataset
+        inference_dataset_name: null 
+    bert-fp-mono: 
+        type: PostTrain
+        model_name: BERTMonolingualPostTrain
+        dataset_name: PostTrainMonoDataset
+        inference_dataset_name: null 
+    dual-bert-pt: 
+        type: Representation
+        model_name: BERTDualPTEncoder
+        dataset_name: BERTDualPTDataset
+        inference_dataset_name: null
+    gpt2lm:
+        type: LanguageModel
+        model_name: GPT2LM
+        dataset_name: null
+        inference_dataset_name: null
+
+# ========= Global configuration ========== #
+# huge file are saved in the root dir
+root_dir: /apdcephfs/share_916081/johntianlan/MyReDial
+# root_dir: /home/johntianlan/sources/MyReDial
+# test_interval bigger than 1, denotes that not test or validation during training
+test_interval: 0.1
+fgm: false
+version: 1
+# the number of the gray negative samples (writer dataset)
+gray_cand_num: 5
+rank: null
+load_param: true
+# default the test set is used during training, because douban, ecommerce has 1:1(pos:neg) settings in the validation set
+# for ubuntu and horse corpus, set this parameter as true, otherwise set false
+valid_during_training: true
+# ========= Global configuration ========== #
+
+
+# ========== Deploy configuration ========== #
+deploy:
+    host: '0.0.0.0'
+    port: 22335
+    dataset: restoration-200k
+    max_len: 256
+    res_max_len: 64
+    recall:
+        activate: false
+        model: full
+        # default topk
+        topk: 100
+        # only the arxiv, writer dataset need the with_source
+        with_source: false
+        # index_type: IVF3722,Flat
+        # index_type: IVF6509,Flat
+        # index_type: Flat
+        index_type: IVF931,Flat
+        index_nprobe: 5
+        # index_type: Flat
+        dimension: 768
+    rerank:
+        activate: false
+        model: bert-ft
+    pipeline:
+        activate: false
+    pipeline_evaluation:
+        activate: true
+# ========== Deploy configuration ========== #

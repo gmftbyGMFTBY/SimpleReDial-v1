@@ -1,0 +1,37 @@
+full_turn_length: 100
+test_interval: 0.05
+valid_during_training: true
+
+# train configuration
+train:
+    lr: 0.00003
+    grad_clip: 1.0
+    seed: 1
+    batch_size: 32
+    max_len: 256
+    res_max_len: 64
+    epoch: 2
+    warmup_ratio: 0.
+    checkpoint: 
+        # path: dual-bert/best_bert-base-chinese.pt
+        # path: bert-fp/best_bert-base-chinese.pt
+        path: dual-bert/best_bert-base-chinese_0.pt
+        is_load: true
+
+# test conf6iguration
+test:
+    seed: 0
+    batch_size: 1
+    max_len: 256
+    res_max_len: 64
+
+# inference configuration
+inference:
+    seed: 0
+    batch_size: 128 
+    max_len: 64
+    ctx_max_len: 256
+    topk: 20
+    index_type: Flat
+    index_nprobe: 1
+    dimension: 768
