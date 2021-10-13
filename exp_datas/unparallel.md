@@ -218,26 +218,7 @@ ATC means the average time cost
 
 ## 5. Appendix
 
-### 5.1 Human Evaluation Standard
-
-| Label |  Meaning |
-| ----- | -------- |
-| 1     | 回复与用户输入完全没有关联，不属于同一个话题，答非所问，完全跑题（若回复为空，同样视为此类型） | 
-| 2     | 回复质量介于1-3之间，难以确定 |
-| 3     | 回复内容与用户问题关联度很小，或者回复内容存在以下一种或者多种情况：（1）回复与问题重复或者高度相似；（2）前后内容有一定关联性但是较低；（3）回复没有任何和用户提问相关的内容，信息量少的万能回复。|
-| 4     | 回复质量基于3-5之间，难以确定 |
-| 5     | 直接回复了问题，前后衔接流畅  |
-
-### 5.2 Time Cost for different settings
-
-<!-- for 1000 test samples -->
-| Methods   | Total Time Cost(ms) |
-| --------- | --------------------- |
-| Pure BM25 | 19503.566 |
-| BM25(top=100)+BERT-FP | 168504.7786 |
-| dual-bert+all(full-rank) | 211419.1337 |
-
-### 5.3 Fine-grained test results
+### 5.1 Fine-grained test results
 
 | Methods         | NDCG@3 | NDCG@5 |
 | --------------- | ------ | ------ |
@@ -251,13 +232,3 @@ ATC means the average time cost
 | DR-BERT-hn(full)| 0.706  | 0.778  |
 | DR-BERT-hn(full,from-dual-bert)| 0.708  | 0.778  |
 | DR-BERT-hn-ctx(full,from-dual-bert)| 0.704  | 0.778  |
-
-## 6. How to reproduce our results
-
-### 1.
-
-### 2. generate the samples for human annotations
-
-#### 2.1 pure BM25 (q-q matching)
-
-#### 2.2 BM25 (q-q matching, topk=100) + BERT-FP

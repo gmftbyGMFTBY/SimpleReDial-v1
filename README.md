@@ -23,6 +23,7 @@
 - [ ] bert-fp-no-cls for context encoder, bert-fp-no-cls or bert-fp-mono for response encoder
 - [x] bert-fp data augmentation for bert-ft model is not very useful
 - [x] for bert-ft-compare, donot use the data augmentation technique
+- [x] Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing)
 
 ## How to Use
 
