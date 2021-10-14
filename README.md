@@ -1,8 +1,8 @@
 # Easy-to-use toolkit for retrieval-based Chatbot
 
-## Recent Activity:
-1. Our released data can be found at [this link](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing). Make sure the following steps are adopted to use our codes.
-2. Our released BERT-FP checkpoint for the RRS corpus can be found [here](https://drive.google.com/drive/folders/1PSdIC6H1SCHWhaBxtRjX0029No8kZtBI?usp=sharing).
+## Recent Activity
+1. Our released RRS corpus can be found [here](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing).
+2. Our released BERT-FP post-training checkpoint for the RRS corpus can be found [here](https://drive.google.com/drive/folders/1PSdIC6H1SCHWhaBxtRjX0029No8kZtBI?usp=sharing).
 
 ## How to Use
 
