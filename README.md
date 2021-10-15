@@ -3,6 +3,7 @@
 ## Recent Activity
 1. Our released RRS corpus can be found [here](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing).
 2. Our released BERT-FP post-training checkpoint for the RRS corpus can be found [here](https://drive.google.com/drive/folders/1PSdIC6H1SCHWhaBxtRjX0029No8kZtBI?usp=sharing).
+3. Our related work (Exploring Dense Retrieval for Dialogue Response Selection) can be found [here](https://arxiv.org/pdf/2110.06612.pdf).
 
 ## How to Use
 
