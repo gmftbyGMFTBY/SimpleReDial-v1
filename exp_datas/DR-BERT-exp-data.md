@@ -168,54 +168,6 @@ The corpus is the responses in the train set.
 | dual-bert-proj-bert-mask-aug-out-dataset | 0.0798      |  0.0552     | 0.0193     | 0.015     | 0.002   |
 
 
-<!-- 
-test set is not used in the faiss index; 
-put the context utterances in the index(faiss and ES q-q matching index);
-INBS is in-batch negative sampling
-all means full+ISN
--->
-| Methods                     | 1 | 2 | 3 | 4 | 5 | Average Human Evaluation | Average Time Cost | 
-| --------------------------- | - | - | - | - | - | ------------------------ | ----------------- |
-| BM25(q-q)                   |   |   |   |   |   |                          |                   |
-| BM25(q-q, topk=100)+BERT-FP |   |   |   |   |   |                          |                   |
-| BERT-FP(full-rank)          |   |   |   |   |   |                          |                   |
-| dual-bert(full-rank)        |   |   |   |   |   |                          |                   |
-| dual-bert+all(full-rank)    |   |   |   |   |   |                          |                   |
-| dual-bert+one2many(full-rank) |   |   |   |   |   |                          |                   |
-| dual-bert+all+one2many(full-rank) |   |   |   |   |   |                          |                   |
-| dual-bert(topk=100)+BERT-FP |   |   |   |   |   |                          |                   |
-
-**The kappa among annotators**: 
-
-## 3. Unparallel Comparison Protocol
-
-Use the extra data (out of domain) monolingual samples to enrich the dual-bert index, which cannot be used by the BM25 q-q matching methods.
-<!-- 
-test set is not used in the faiss index; put the context utterances in the index(faiss and ES q-q matching index) 
-EXT means the extra data is used
-BERT-FP=bert-ft+
--->
-| Methods                     | 1 | 2 | 3 | 4 | 5 | Average Human Evaluation | Average Time Cost | 
-| --------------------------- | - | - | - | - | - | ------------------------ | ----------------- |
-| dual-bert(topk=100, in-dataset-extend)+BERT-FP    |   |   |   |   |   |                          |                   |
-| dual-bert(topk=100, in-dataset+out-dataset-extend)+BERT-FP    |   |   |   |   |   |                          |                   |
-
-**The kappa among annotators**: 
-
-## 4. Hyper-parameter recall top-k
-
-Choose the propoer top-k value for the full-rank setting and extended full-rank setting epxeriments
-<!-- 
-AHE means the average human evaluation
-ATC means the average time cost
--->
-| Models                  | 1 | 2 | 3 | 4 | 5 | AHE | ATC |
-| ----------------------- | - | - | - | - | - | --- | --- |
-| BM25(topk=10)+BERT-FP   |   |   |   |   |   |     |     | 
-| BM25(topk=100)+BERT-FP  |   |   |   |   |   |     |     | 
-| BM25(topk=500)+BERT-FP  |   |   |   |   |   |     |     | 
-| BM25(topk=1000)+BERT-FP |   |   |   |   |   |     |     | 
-
 ## 5. Appendix
 
 ### 5.1 Fine-grained test results
