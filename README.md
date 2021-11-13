@@ -1,7 +1,7 @@
 # The sources codes of DR-BERT and baselines
 
 ## Recent Activity
-1. Our released RRS corpus can be found [here](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing).
+1. Our released RRS corpus and Crawled Douban Nonparalell corpus can be found [here](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing).
 2. Our released BERT-FP post-training checkpoint for the RRS corpus can be found [here](https://drive.google.com/drive/folders/1PSdIC6H1SCHWhaBxtRjX0029No8kZtBI?usp=sharing).
 3. Our post-training and fine-tuning checkpoints on Ubuntu, Douban, E-commerce, and our released RRS datasets are released [here](https://drive.google.com/drive/folders/1y48ky8twFKbvcu9TCJ9DxBG9lMTYnRYI?usp=sharing). Feel free to reproduce the experimental results in the paper.
 
