@@ -13,7 +13,7 @@
 
 ## How to Use
 
-1. Init the repo
+1. init the repo
 
     Before using the repo, please run the following command to init:
     
