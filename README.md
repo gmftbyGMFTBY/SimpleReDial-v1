@@ -6,7 +6,6 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/exploring-dense-retrieval-for-dialogue/conversational-response-selection-on-rrs-1)](https://paperswithcode.com/sota/conversational-response-selection-on-rrs-1?p=exploring-dense-retrieval-for-dialogue)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/exploring-dense-retrieval-for-dialogue/conversational-response-selection-on-ubuntu-1)](https://paperswithcode.com/sota/conversational-response-selection-on-ubuntu-1?p=exploring-dense-retrieval-for-dialogue)
 
-
 ## Recent Activity
 1. Our released RRS corpus can be found [here](https://drive.google.com/drive/folders/1EcjrkDnx8mSZlGum0dQHYJGDyUMEEwBz?usp=sharing).
 2. Our released BERT-FP post-training checkpoint for the RRS corpus can be found [here](https://drive.google.com/drive/folders/1PSdIC6H1SCHWhaBxtRjX0029No8kZtBI?usp=sharing).
